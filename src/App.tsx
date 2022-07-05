@@ -8,7 +8,7 @@ import Intro from './components/Intro';
 const App: Component = () => (
   <>
     <DarkSwitch />
-    <div class="flex flex-col items-center gap-4 text-neutral-800 dark:text-neutral-100 p-4">
+    <div class="flex flex-col items-center gap-4 text-neutral-700 dark:text-neutral-200 p-4">
       <img
         src={webp}
         onError={(e) => {
