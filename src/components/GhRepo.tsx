@@ -1,21 +1,24 @@
-import { Component, createResource, For } from 'solid-js';
+import { Component, createResource, For, Show } from 'solid-js';
 import getRepos from '../utils/getRepos';
 
 const GhRepo: Component = () => {
   const [repos] = createResource(getRepos);
 
   return (
-    <div class="max-h-[20rem] overflow-y-auto flex flex-col gap-2">
+    <ul class="max-h-[20rem] overflow-y-auto flex flex-col gap-2 p-2 max-w-prose">
       <For each={repos()}>
         {(repo) => (
-          <div>
-            <a href={repo.html_url} target="_blank" class="underline">
-              {repo.name}
+          <li class="border-red-200 dark:border-red-800 border-2 border-dashed p-4">
+            <a href={repo.html_url} target="_blank" class="flex flex-col gap-4">
+              <h6>{repo.name}</h6>
+              <Show when={repo.description}>
+                <p>{repo.description}</p>
+              </Show>
             </a>
-          </div>
+          </li>
         )}
       </For>
-    </div>
+    </ul>
   );
 };
 
