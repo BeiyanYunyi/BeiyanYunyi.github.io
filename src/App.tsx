@@ -2,6 +2,7 @@ import { Component } from 'solid-js';
 import png from './assets/头像圆.png';
 import webp from './assets/头像圆.webp';
 import DarkSwitch from './components/DarkSwitch';
+import GhRepo from './components/GhRepo';
 import Intro from './components/Intro';
 
 const App: Component = () => (
@@ -17,6 +18,7 @@ const App: Component = () => (
       />
       <h1 class="text-3xl">黎想</h1>
       <Intro />
+      <GhRepo />
     </div>
   </>
 );
