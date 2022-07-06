@@ -6,7 +6,7 @@ const GhRepo: Component = () => {
   const [repos] = createResource(getRepos);
   return (
     <Show when={repos()?.length !== 0}>
-      <ul class="flex flex-col gap-2 p-2 w-prose">
+      <ul class="flex flex-col gap-2 p-2 max-w-prose">
         <For each={repos()}>
           {(repo) => (
             <li class="rounded-md shadow-md shadow-neutral-200 dark:shadow-dark-900 hover:shadow transition-all duration-200 transform-gpu hover:rotate-3 backdrop-filter backdrop-blur-md">
