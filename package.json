@@ -12,9 +12,9 @@
   "devDependencies": {
     "@types/babel__core": "^7.1.19",
     "@types/color-string": "^1.5.2",
-    "@types/node": "^18.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.30.4",
-    "@typescript-eslint/parser": "^5.30.4",
+    "@types/node": "^18.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
     "eslint": "^8.19.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "solid-icons": "^0.5.0",
-    "solid-js": "^1.4.6"
+    "solid-js": "^1.4.6",
+    "solid-transition-group": "^0.0.10"
   }
 }
