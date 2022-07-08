@@ -124,8 +124,8 @@ const FractalClock: Component = () => {
     ctx.lineWidth = settings.lineWidth * window.devicePixelRatio;
 
     const centre = {
-      x: ref.width / 2,
-      y: ref.height / 2,
+      x: ref.width / 2 / pr(),
+      y: ref.height / 2 / pr(),
     };
 
     const length = Math.min(ref.width, ref.height) / 4;
