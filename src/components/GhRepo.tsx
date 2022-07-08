@@ -9,7 +9,7 @@ const GhRepo: Component = () => {
       <ul class="flex flex-col gap-2 p-2 max-w-prose">
         <For each={repos()}>
           {(repo) => (
-            <li class="rounded-md shadow-md shadow-neutral-200 dark:shadow-dark-900 hover:shadow transition-all duration-200 transform-gpu hover:rotate-3 backdrop-filter backdrop-blur-md">
+            <li class="rounded-md shadow-md shadow-neutral-200 dark:shadow-dark-900 hover:shadow transition-all duration-200 backdrop-filter backdrop-blur-md">
               <a href={repo.html_url} target="_blank" class="flex flex-col gap-4 p-4">
                 <h6 class="underline text-red-800 dark:text-red-200">{repo.name}</h6>
                 <Show when={repo.description}>

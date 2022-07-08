@@ -2,11 +2,13 @@ import { Component } from 'solid-js';
 import png from './assets/头像圆.png';
 import webp from './assets/头像圆.webp';
 import DarkSwitch from './components/DarkSwitch';
+import FractalClock from './components/FractalClock';
 import GhRepo from './components/GhRepo';
 import Intro from './components/Intro';
 
 const App: Component = () => (
   <>
+    <FractalClock />
     <DarkSwitch />
     <div class="flex flex-col items-center gap-4 text-neutral-700 dark:text-neutral-200 p-4">
       <img
