@@ -9,15 +9,16 @@ const settings = {
 
 const OFFSET = 0;
 
-const random = () => Array.from(crypto.getRandomValues(new Uint8Array(1)))[0] / 255;
-
 const getColorString = (total: number, layer: number) => {
   const minOpacity = 0;
   const maxOpacity = 1;
   const colorFloor = 10;
-  const red = colorFloor + Math.floor(random() - colorFloor);
-  const green = colorFloor + Math.floor(random() * (255 - colorFloor));
-  const blue = colorFloor + Math.floor(random() * (255 - colorFloor));
+  const random = () =>
+    colorFloor +
+    Math.floor(
+      (Array.from(crypto.getRandomValues(new Uint8Array(1)))[0] / 255) * (255 - colorFloor),
+    );
+  const [red, green, blue] = [random(), random(), random()];
   const opacity = minOpacity + (maxOpacity - minOpacity) * ((total - layer) / total);
   return `rgba(${red}, ${green}, ${blue}, ${opacity})`;
 };
