@@ -1,4 +1,4 @@
-import { Component, createMemo, ParentComponent, Show } from 'solid-js';
+import { Component, createMemo, createSignal, ParentComponent, Show } from 'solid-js';
 import styles from './fractalClock.module.css';
 
 const getColorString = (total = 7, layer = 1) => {
@@ -41,6 +41,8 @@ const Arm: ParentComponent<{ total: number; layer: number; date: Date }> = (prop
 };
 
 const FractalClock: Component = () => {
+  const [total, setTotal] = createSignal(3);
+  document.addEventListener('click', () => setTotal((ori) => (ori >= 7 ? 3 : ori + 1)));
   const date = new Date();
   const color = createMemo(() => getColorString());
   const seconds = () => date.getSeconds() + 60 * date.getMinutes() + 3600 * date.getHours();
@@ -52,7 +54,7 @@ const FractalClock: Component = () => {
       }}
     >
       <style type="text/css">{`.${styles.hand} {animation-delay: ${seconds() * -1}s}`}</style>
-      <Arm total={3} layer={1} date={date} />
+      <Arm total={total()} layer={1} date={date} />
     </div>
   );
 };
