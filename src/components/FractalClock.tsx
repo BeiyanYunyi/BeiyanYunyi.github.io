@@ -124,8 +124,8 @@ const FractalClock: Component = () => {
     ctx.lineWidth = settings.lineWidth * window.devicePixelRatio;
 
     const centre = {
-      x: ref.width / 2 / pr(),
-      y: ref.height / 2 / pr(),
+      x: ref.width / 2,
+      y: ref.height / 2,
     };
 
     const length = Math.min(ref.width, ref.height) / 4;
@@ -151,7 +151,6 @@ const FractalClock: Component = () => {
   window.addEventListener('resize', () => {
     setPr(window.devicePixelRatio || 1);
     setWh(getWh());
-    ctx!.scale(window.devicePixelRatio, window.devicePixelRatio);
     window.cancelAnimationFrame(aid!);
     animate();
   });
@@ -160,7 +159,6 @@ const FractalClock: Component = () => {
     setPr(window.devicePixelRatio || 1);
     setWh(getWh());
     ctx = ref?.getContext('2d')!;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     animate();
   });
 
