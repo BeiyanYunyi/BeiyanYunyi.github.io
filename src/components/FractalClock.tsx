@@ -25,7 +25,7 @@ const getColorString = (total: number, layer: number) => {
 
 let colorArray: string[] = [];
 
-const changeColorArray = () => {
+export const changeColorArray = () => {
   colorArray = [];
   for (let i = 0; i < settings.depth; i += 1) {
     colorArray.push(getColorString(settings.depth, i));
@@ -49,104 +49,105 @@ const getAngle = () => {
   };
 };
 
+let ref: HTMLCanvasElement | undefined;
+let ctx: CanvasRenderingContext2D | undefined;
+let angle = getAngle();
+
+const clearCanvas = () => {
+  ctx!.clearRect(0, 0, ref!.width, ref!.height);
+};
+
+const drawMinuteSecond = (
+  count: number,
+  length: number,
+  centre: { x: number; y: number },
+  pAngle: number,
+) => {
+  if (!ctx) return;
+  ctx.strokeStyle = colorArray[settings.depth - count];
+
+  ctx.beginPath();
+  ctx.moveTo(centre.x, centre.y);
+  ctx.lineTo(
+    centre.x + Math.cos(angle.second + pAngle) * length,
+    centre.y + Math.sin(angle.second + pAngle) * length,
+  );
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(centre.x, centre.y);
+  ctx.lineTo(
+    centre.x + Math.cos(angle.minute + pAngle) * length,
+    centre.y + Math.sin(angle.minute + pAngle) * length,
+  );
+  ctx.stroke();
+
+  if (count) {
+    drawMinuteSecond(
+      count - 1,
+      length * settings.scale,
+      {
+        x: centre.x + Math.cos(angle.second + pAngle) * length,
+        y: centre.y + Math.sin(angle.second + pAngle) * length,
+      },
+
+      angle.second - angle.hour - Math.PI + pAngle + OFFSET,
+    );
+    drawMinuteSecond(
+      count - 1,
+      length * settings.scale,
+      {
+        x: centre.x + Math.cos(angle.minute + pAngle) * length,
+        y: centre.y + Math.sin(angle.minute + pAngle) * length,
+      },
+
+      angle.minute - angle.hour - Math.PI + pAngle + OFFSET,
+    );
+  }
+};
+
+/** 画一帧 */
+export const draw = () => {
+  if (!ref) return;
+  if (!ctx) return;
+  clearCanvas();
+  ctx.globalAlpha = 1;
+  // eslint-disable-next-line prefer-destructuring
+  ctx.strokeStyle = colorArray[0];
+  ctx.lineWidth = settings.lineWidth * window.devicePixelRatio;
+
+  const centre = {
+    x: ref.width / 2,
+    y: ref.height / 2,
+  };
+
+  const length = Math.min(ref.width, ref.height) / 4;
+
+  ctx.beginPath();
+  ctx.moveTo(centre.x, centre.y);
+  ctx.lineTo(
+    centre.x + (Math.cos(angle.hour) * length) / 2,
+    centre.y + (Math.sin(angle.hour) * length) / 2,
+  );
+  ctx.stroke();
+
+  drawMinuteSecond(settings.depth, length, centre, 0);
+};
+
+let aid: undefined | number;
+
+const animate = () => {
+  if (!animatePause.pause()) {
+    aid = window.requestAnimationFrame(animate);
+    angle = getAngle();
+    draw();
+  } else if (aid) window.cancelAnimationFrame(aid);
+};
+
 const FractalClock: Component = () => {
-  let angle = getAngle();
-  let ref: HTMLCanvasElement | undefined;
-  let ctx: CanvasRenderingContext2D | undefined;
   const [pr, setPr] = createSignal(window.devicePixelRatio || 1);
   const getWh = () => ({ width: window.innerWidth, height: window.innerHeight });
   const [wh, setWh] = createSignal(getWh());
-
-  const clearCanvas = () => {
-    ctx!.clearRect(0, 0, ref!.width, ref!.height);
-  };
-
-  const drawMinuteSecond = (
-    count: number,
-    length: number,
-    centre: { x: number; y: number },
-    pAngle: number,
-  ) => {
-    if (!ctx) return;
-    ctx.strokeStyle = colorArray[settings.depth - count];
-
-    ctx.beginPath();
-    ctx.moveTo(centre.x, centre.y);
-    ctx.lineTo(
-      centre.x + Math.cos(angle.second + pAngle) * length,
-      centre.y + Math.sin(angle.second + pAngle) * length,
-    );
-    ctx.stroke();
-
-    ctx.beginPath();
-    ctx.moveTo(centre.x, centre.y);
-    ctx.lineTo(
-      centre.x + Math.cos(angle.minute + pAngle) * length,
-      centre.y + Math.sin(angle.minute + pAngle) * length,
-    );
-    ctx.stroke();
-
-    if (count) {
-      drawMinuteSecond(
-        count - 1,
-        length * settings.scale,
-        {
-          x: centre.x + Math.cos(angle.second + pAngle) * length,
-          y: centre.y + Math.sin(angle.second + pAngle) * length,
-        },
-
-        angle.second - angle.hour - Math.PI + pAngle + OFFSET,
-      );
-      drawMinuteSecond(
-        count - 1,
-        length * settings.scale,
-        {
-          x: centre.x + Math.cos(angle.minute + pAngle) * length,
-          y: centre.y + Math.sin(angle.minute + pAngle) * length,
-        },
-
-        angle.minute - angle.hour - Math.PI + pAngle + OFFSET,
-      );
-    }
-  };
-
-  /** 画一帧 */
-  const draw = () => {
-    if (!ref) return;
-    if (!ctx) return;
-    clearCanvas();
-    ctx.globalAlpha = 1;
-    // eslint-disable-next-line prefer-destructuring
-    ctx.strokeStyle = colorArray[0];
-    ctx.lineWidth = settings.lineWidth * window.devicePixelRatio;
-
-    const centre = {
-      x: ref.width / 2,
-      y: ref.height / 2,
-    };
-
-    const length = Math.min(ref.width, ref.height) / 4;
-
-    ctx.beginPath();
-    ctx.moveTo(centre.x, centre.y);
-    ctx.lineTo(
-      centre.x + (Math.cos(angle.hour) * length) / 2,
-      centre.y + (Math.sin(angle.hour) * length) / 2,
-    );
-    ctx.stroke();
-
-    drawMinuteSecond(settings.depth, length, centre, 0);
-  };
-
-  let aid: undefined | number;
-
-  const animate = () => {
-    if (!animatePause.pause()) {
-      aid = window.requestAnimationFrame(animate);
-      angle = getAngle();
-      draw();
-    } else if (aid) window.cancelAnimationFrame(aid);
-  };
 
   onCleanup(() => {
     if (aid) window.cancelAnimationFrame(aid);
@@ -157,11 +158,6 @@ const FractalClock: Component = () => {
     setWh(getWh());
     draw(); // 窗口大小变化后重绘一帧以在暂停时刷新
     animate();
-  });
-
-  window.addEventListener('click', () => {
-    changeColorArray();
-    draw(); // 更改颜色后重绘一帧以在暂停时刷新
   });
 
   createEffect(() => {

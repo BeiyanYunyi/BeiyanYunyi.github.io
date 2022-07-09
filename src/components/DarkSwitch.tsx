@@ -1,11 +1,11 @@
-import { IoMoonOutline, IoSunnyOutline } from 'solid-icons/io';
+import { IoMoon, IoSunny } from 'solid-icons/io';
 import { Component, Show } from 'solid-js';
 import darkMode from '../utils/darkMode';
 
 const DarkSwitch: Component = () => (
-  <label>
-    <Show when={darkMode.dark()} fallback={<IoMoonOutline size={24} />}>
-      <IoSunnyOutline size={24} />
+  <label class="cursor-pointer">
+    <Show when={darkMode.dark()} fallback={<IoMoon size={24} />}>
+      <IoSunny size={24} />
     </Show>
     <input
       class="hidden"
