@@ -11,14 +11,12 @@ const settings = {
 
 const OFFSET = 0;
 
-const getColorString = (total: number, layer: number) => {
+const getColorString = (layer: number) => {
   const colorFloor = 10;
-  const random = () =>
-    colorFloor +
-    Math.floor(
-      (Array.from(crypto.getRandomValues(new Uint8Array(1)))[0] / 255) * (255 - colorFloor),
-    );
-  const [red, green, blue] = [random(), random(), random()];
+  const randomAry = Array.from(crypto.getRandomValues(new Uint8Array(3)));
+  const [red, green, blue] = randomAry.map(
+    (num) => colorFloor + Math.floor((num / 255) * (255 - colorFloor)),
+  );
   const opacity = settings.opacity ** layer;
   return `rgba(${red}, ${green}, ${blue}, ${opacity})`;
 };
@@ -28,7 +26,7 @@ let colorArray: string[] = [];
 export const changeColorArray = () => {
   colorArray = [];
   for (let i = 0; i < settings.depth; i += 1) {
-    colorArray.push(getColorString(settings.depth, i));
+    colorArray.push(getColorString(i));
   }
 };
 
