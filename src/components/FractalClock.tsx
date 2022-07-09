@@ -1,7 +1,8 @@
-import { Component, createSignal, onMount } from 'solid-js';
+import { Component, createEffect, createSignal, onCleanup, onMount } from 'solid-js';
+import animatePause from '../utils/animatePause';
 
 const settings = {
-  depth: 10,
+  depth: 7,
   lineWidth: 2,
   scale: 1,
   showFps: false,
@@ -113,6 +114,7 @@ const FractalClock: Component = () => {
     }
   };
 
+  /** 画一帧 */
   const draw = () => {
     if (!ref) return;
     if (!ctx) return;
@@ -139,26 +141,42 @@ const FractalClock: Component = () => {
 
     drawMinuteSecond(settings.depth, length, centre, 0);
   };
-  let aid: number | undefined;
+
+  let aid: undefined | number;
 
   const animate = () => {
-    aid = window.requestAnimationFrame(animate);
-    angle = getAngle();
-    draw();
+    if (!animatePause.pause()) {
+      aid = window.requestAnimationFrame(animate);
+      angle = getAngle();
+      draw();
+    } else if (aid) window.cancelAnimationFrame(aid);
   };
+
+  onCleanup(() => {
+    if (aid) window.cancelAnimationFrame(aid);
+  });
 
   window.addEventListener('resize', () => {
     setPr(window.devicePixelRatio || 1);
     setWh(getWh());
-    window.cancelAnimationFrame(aid!);
+    draw(); // 窗口大小变化后重绘一帧以在暂停时刷新
     animate();
+  });
+
+  createEffect(() => {
+    const tPause = animatePause.pause();
+    if (tPause || aid) {
+      window.cancelAnimationFrame(aid!);
+      aid = undefined;
+    } else {
+      animate();
+    }
   });
 
   onMount(() => {
     setPr(window.devicePixelRatio || 1);
     setWh(getWh());
     ctx = ref?.getContext('2d')!;
-    animate();
   });
 
   return (
