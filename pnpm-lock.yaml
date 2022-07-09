@@ -15,19 +15,19 @@ specifiers:
   eslint-plugin-solid: ^0.7.0
   prettier: ^2.7.1
   solid-icons: ^0.5.0
-  solid-js: ^1.4.6
+  solid-js: ^1.4.7
   solid-transition-group: ^0.0.10
   typescript: ^4.7.4
   typescript-plugin-css-modules: ^3.4.0
-  vite: ^2.9.13
+  vite: ^2.9.14
   vite-plugin-solid: ^2.2.6
   vite-plugin-windicss: ^1.8.6
   windicss: ^3.5.6
 
 dependencies:
-  solid-icons: 0.5.0_solid-js@1.4.6
-  solid-js: 1.4.6
-  solid-transition-group: 0.0.10_solid-js@1.4.6
+  solid-icons: 0.5.0_solid-js@1.4.7
+  solid-js: 1.4.7
+  solid-transition-group: 0.0.10_solid-js@1.4.7
 
 devDependencies:
   '@types/babel__core': 7.1.19
@@ -45,9 +45,9 @@ devDependencies:
   prettier: 2.7.1
   typescript: 4.7.4
   typescript-plugin-css-modules: 3.4.0_typescript@4.7.4
-  vite: 2.9.13
+  vite: 2.9.14
   vite-plugin-solid: 2.2.6
-  vite-plugin-windicss: 1.8.6_vite@2.9.13
+  vite-plugin-windicss: 1.8.6_vite@2.9.14
   windicss: 3.5.6
 
 packages:
@@ -2567,8 +2567,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup/2.75.7:
-    resolution: {integrity: sha512-VSE1iy0eaAYNCxEXaleThdFXqZJ42qDBatAwrfnPlENEZ8erQ+0LYX4JXOLPceWfZpV1VtZwZ3dFCuOZiSyFtQ==}
+  /rollup/2.76.0:
+    resolution: {integrity: sha512-9jwRIEY1jOzKLj3nsY/yot41r19ITdQrhs+q3ggNWhr9TQgduHqANvPpS32RNpzGklJu3G1AJfvlZLi/6wFgWA==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -2647,18 +2647,18 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /solid-icons/0.5.0_solid-js@1.4.6:
+  /solid-icons/0.5.0_solid-js@1.4.7:
     resolution: {integrity: sha512-diDMdtV2loH0LDbAPHAQiQNcxw2lXtzlw1qBDYtmZKSY1vedOdBk/aVylmVhzTYP12SQYeJdcg25MY6CHnkn8w==}
     peerDependencies:
       solid-js: ^1.3.0
     dependencies:
-      solid-js: 1.4.6
+      solid-js: 1.4.7
     dev: false
 
-  /solid-js/1.4.6:
-    resolution: {integrity: sha512-vF0x5qbVCDi8zlEyN92y/i+pS7QNYh3uNvbSyUYDhLifKuYqGcJwGxbH9zzDX5sR8o1ijgzI6BEAXlcR7Mkkjw==}
+  /solid-js/1.4.7:
+    resolution: {integrity: sha512-u3hoe5w3xseAc/8zLwYaQVGanWXknMMQkzryNz7lOPy2ygW6DhCtfMseun4kLflRNRzrUUpTV3W5p7j2SGcHCQ==}
 
-  /solid-refresh/0.4.1_solid-js@1.4.6:
+  /solid-refresh/0.4.1_solid-js@1.4.7:
     resolution: {integrity: sha512-v3tD/OXQcUyXLrWjPW1dXZyeWwP7/+GQNs8YTL09GBq+5FguA6IejJWUvJDrLIA4M0ho9/5zK2e9n+uy+4488g==}
     peerDependencies:
       solid-js: ^1.3
@@ -2666,15 +2666,15 @@ packages:
       '@babel/generator': 7.18.7
       '@babel/helper-module-imports': 7.18.6
       '@babel/types': 7.18.7
-      solid-js: 1.4.6
+      solid-js: 1.4.7
     dev: true
 
-  /solid-transition-group/0.0.10_solid-js@1.4.6:
+  /solid-transition-group/0.0.10_solid-js@1.4.7:
     resolution: {integrity: sha512-b3O9z6BUP60CG1WnTdqFuvHms0reDNYwQF+eAEEaSaoDEmiOu9+Lu7zQgWGySJjaAdSAClhmFCmx/eAjQgfIoA==}
     peerDependencies:
       solid-js: ^1.0.0
     dependencies:
-      solid-js: 1.4.6
+      solid-js: 1.4.7
     dev: false
 
   /source-map-js/1.0.2:
@@ -2917,9 +2917,9 @@ packages:
       '@babel/preset-typescript': 7.18.6_@babel+core@7.18.6
       babel-preset-solid: 1.4.5_@babel+core@7.18.6
       merge-anything: 5.0.2
-      solid-js: 1.4.6
-      solid-refresh: 0.4.1_solid-js@1.4.6
-      vite: 2.9.13
+      solid-js: 1.4.7
+      solid-refresh: 0.4.1_solid-js@1.4.7
+      vite: 2.9.14
     transitivePeerDependencies:
       - less
       - sass
@@ -2927,7 +2927,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-windicss/1.8.6_vite@2.9.13:
+  /vite-plugin-windicss/1.8.6_vite@2.9.14:
     resolution: {integrity: sha512-D4G4qmumgklPiPrq/ZALqq8Mby6krskFVShbmb5c+0VCSsLUN96qyFRTwi81rNIHwFvlbpqflgh+BpUM/9VjQg==}
     peerDependencies:
       vite: ^2.0.1
@@ -2935,14 +2935,14 @@ packages:
       '@windicss/plugin-utils': 1.8.6
       debug: 4.3.4
       kolorist: 1.5.1
-      vite: 2.9.13
+      vite: 2.9.14
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/2.9.13:
-    resolution: {integrity: sha512-AsOBAaT0AD7Mhe8DuK+/kE4aWYFMx/i0ZNi98hJclxb4e0OhQcZYUrvLjIaQ8e59Ui7txcvKMiJC1yftqpQoDw==}
+  /vite/2.9.14:
+    resolution: {integrity: sha512-P/UCjSpSMcE54r4mPak55hWAZPlyfS369svib/gpmz8/01L822lMPOJ/RYW6tLCe1RPvMvOsJ17erf55bKp4Hw==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -2960,7 +2960,7 @@ packages:
       esbuild: 0.14.48
       postcss: 8.4.14
       resolve: 1.22.1
-      rollup: 2.75.7
+      rollup: 2.76.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
