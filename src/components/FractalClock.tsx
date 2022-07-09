@@ -1,17 +1,16 @@
 import { Component, createSignal, onMount } from 'solid-js';
 
 const settings = {
-  depth: 7,
+  depth: 10,
   lineWidth: 2,
   scale: 1,
   showFps: false,
+  opacity: 0.6,
 };
 
 const OFFSET = 0;
 
 const getColorString = (total: number, layer: number) => {
-  const minOpacity = 0;
-  const maxOpacity = 1;
   const colorFloor = 10;
   const random = () =>
     colorFloor +
@@ -19,7 +18,7 @@ const getColorString = (total: number, layer: number) => {
       (Array.from(crypto.getRandomValues(new Uint8Array(1)))[0] / 255) * (255 - colorFloor),
     );
   const [red, green, blue] = [random(), random(), random()];
-  const opacity = minOpacity + (maxOpacity - minOpacity) * ((total - layer) / total);
+  const opacity = settings.opacity ** layer;
   return `rgba(${red}, ${green}, ${blue}, ${opacity})`;
 };
 
