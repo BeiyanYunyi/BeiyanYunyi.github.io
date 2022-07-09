@@ -34,10 +34,6 @@ const changeColorArray = () => {
 
 changeColorArray();
 
-window.addEventListener('click', () => {
-  changeColorArray();
-});
-
 const ratioToRadians = (value: number) => value * 2 * Math.PI - Math.PI / 2;
 
 const getAngle = () => {
@@ -161,6 +157,11 @@ const FractalClock: Component = () => {
     setWh(getWh());
     draw(); // 窗口大小变化后重绘一帧以在暂停时刷新
     animate();
+  });
+
+  window.addEventListener('click', () => {
+    changeColorArray();
+    draw(); // 更改颜色后重绘一帧以在暂停时刷新
   });
 
   createEffect(() => {
