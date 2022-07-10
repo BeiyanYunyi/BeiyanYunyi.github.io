@@ -152,6 +152,7 @@ const FractalClock: Component = () => {
   });
 
   window.addEventListener('resize', () => {
+    if (aid) window.cancelAnimationFrame(aid);
     setPr(window.devicePixelRatio || 1);
     setWh(getWh());
     draw(); // 窗口大小变化后重绘一帧以在暂停时刷新
