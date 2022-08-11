@@ -11,6 +11,14 @@
     "noEmit": true,
     "types": ["vite/client"],
     "isolatedModules": true,
+    "resolveJsonModule": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
-  }
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "CommonJS"
+    }
+  },
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
