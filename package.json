@@ -2,7 +2,7 @@
   "name": "lixiang810-github-io",
   "version": "1.0.0",
   "description": "lixiang810's home page",
-  "packageManager": "pnpm@7.9.0",
+  "packageManager": "pnpm@7.9.5",
   "scripts": {
     "start": "vite",
     "dev": "vite",
@@ -23,7 +23,7 @@
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-solid": "^0.7.1",
     "node-fetch": "^2.6.7",
     "prettier": "^2.7.1",

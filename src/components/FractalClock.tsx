@@ -2,11 +2,12 @@ import { Component, createEffect, createSignal, onCleanup, onMount } from 'solid
 import animatePause from '../utils/animatePause';
 
 const settings = {
-  depth: 7,
+  depth: 8,
   lineWidth: 2,
   scale: 1,
   showFps: false,
-  opacity: 0.6,
+  opacity: 0.7,
+  lengthFractor: 0.8,
 };
 
 const OFFSET = 0;
@@ -83,22 +84,20 @@ const drawMinuteSecond = (
   if (count) {
     drawMinuteSecond(
       count - 1,
-      length * settings.scale,
+      length * settings.scale * settings.lengthFractor,
       {
         x: centre.x + Math.cos(angle.second + pAngle) * length,
         y: centre.y + Math.sin(angle.second + pAngle) * length,
       },
-
       angle.second - angle.hour - Math.PI + pAngle + OFFSET,
     );
     drawMinuteSecond(
       count - 1,
-      length * settings.scale,
+      length * settings.scale * settings.lengthFractor,
       {
         x: centre.x + Math.cos(angle.minute + pAngle) * length,
         y: centre.y + Math.sin(angle.minute + pAngle) * length,
       },
-
       angle.minute - angle.hour - Math.PI + pAngle + OFFSET,
     );
   }
@@ -147,16 +146,18 @@ const FractalClock: Component = () => {
   const getWh = () => ({ width: window.innerWidth, height: window.innerHeight });
   const [wh, setWh] = createSignal(getWh());
 
-  onCleanup(() => {
-    if (aid) window.cancelAnimationFrame(aid);
-  });
-
-  window.addEventListener('resize', () => {
+  const handleResize = () => {
     if (aid) window.cancelAnimationFrame(aid);
     setPr(window.devicePixelRatio || 1);
     setWh(getWh());
     draw(); // 窗口大小变化后重绘一帧以在暂停时刷新
     animate();
+  };
+  window.addEventListener('resize', handleResize);
+
+  onCleanup(() => {
+    if (aid) window.cancelAnimationFrame(aid);
+    window.removeEventListener('resize', handleResize);
   });
 
   createEffect(() => {
