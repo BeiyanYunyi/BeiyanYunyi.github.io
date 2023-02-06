@@ -19,7 +19,7 @@ const App: Component = () => (
         }}
         class="h-40 w-40"
       />
-      <h1 class="text-3xl">黎想</h1>
+      <h1 class="text-3xl">北雁云依</h1>
       <Intro />
       <GhRepo />
     </div>
@@ -28,7 +28,7 @@ const App: Component = () => (
       <p>
         <a
           class="underline"
-          href="https://github.com/lixiang810/lixiang810.github.io"
+          href="https://github.com/BeiyanYunyi/BeiyanYunyi.github.io"
           target="_blank"
         >
           Built

@@ -8,7 +8,7 @@ const Links: Component = () => (
       </a>
     </li>
     <li>
-      <a href="https://github.com/lixiang810" target="_blank">
+      <a href="https://github.com/BeiyanYunyi" target="_blank">
         我的 GitHub
       </a>
     </li>

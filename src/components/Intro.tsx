@@ -6,7 +6,7 @@ const Intro: Component = () => (
   <>
     <div class="prose prose-zinc rounded-md shadow-md shadow-neutral-200 dark:shadow-dark-900 hover:shadow backdrop-blur hover:backdrop-blur-sm transition-all duration-200 backdrop-filter">
       <img
-        src={`https://github-readme-stats.vercel.app/api?username=lixiang810&show_icons=true${
+        src={`https://github-readme-stats.vercel.app/api?username=BeiyanYunyi&show_icons=true${
           darkMode.dark() ? '&theme=dark' : ''
         }&bg_color=00000000&hide_border=1`}
       />

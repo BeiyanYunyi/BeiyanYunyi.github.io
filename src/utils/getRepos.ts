@@ -69,7 +69,7 @@ const getRepos = async () => {
     return Promise.resolve([]);
   }
   const res: IRepo[] = await (
-    await fetch('https://api.github.com/users/lixiang810/repos?sort=updated&per_page=100')
+    await fetch('https://api.github.com/users/BeiyanYunyi/repos?sort=updated&per_page=100')
   ).json();
   return res;
 };
