@@ -17,7 +17,7 @@ const Intro: Component = () => (
       </div>
       <div class="prose prose-zinc rounded-md shadow-md shadow-neutral-200 dark:shadow-dark-900 hover:shadow p-4 backdrop-blur hover:backdrop-blur-sm transition-all duration-200 backdrop-filter">
         <p>
-          现在是 <a href="https://github.com/Dustella">Dustella</a> 的女朋友。
+          现在是 <a href="https://www.dustella.net">Dustella</a> 的女朋友。
         </p>
         <p>🏴️‍🅰️反对俄罗斯对乌克兰的侵略，支持乌克兰人民及其政府军队的反侵略斗争。</p>
         <Links />
