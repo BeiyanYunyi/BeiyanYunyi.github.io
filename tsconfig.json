@@ -11,8 +11,7 @@
     "noEmit": true,
     "types": ["vite/client"],
     "isolatedModules": true,
-    "resolveJsonModule": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "resolveJsonModule": true
   },
   "ts-node": {
     "compilerOptions": {

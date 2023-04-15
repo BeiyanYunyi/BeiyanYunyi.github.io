@@ -2,43 +2,40 @@
   "name": "BeiyanYunyi-github-io",
   "version": "1.0.0",
   "description": "BeiyanYunyi's home page",
-  "packageManager": "pnpm@7.26.3",
+  "packageManager": "pnpm@8.2.0",
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
-    "upgpm": "ts-node ./scripts/upgradePackageManager.ts"
+    "upgpm": "ts-node --transpileOnly ./scripts/upgradePackageManager.ts"
   },
   "license": "AGPL-3.0-or-later",
   "devDependencies": {
     "@types/babel__core": "^7.20.0",
     "@types/color-string": "^1.5.2",
-    "@types/node": "^18.11.19",
-    "@types/node-fetch": "^2.6.2",
+    "@types/node": "^18.15.11",
     "@types/semver": "^7.3.13",
-    "@typescript-eslint/eslint-plugin": "^5.50.0",
-    "@typescript-eslint/parser": "^5.50.0",
-    "eslint": "^8.33.0",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.38.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-solid": "^0.9.4",
-    "node-fetch": "^2.6.7",
-    "prettier": "^2.8.3",
-    "semver": "^7.3.8",
+    "eslint-plugin-solid": "^0.12.1",
+    "prettier": "^2.8.7",
+    "semver": "^7.4.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5",
-    "typescript-plugin-css-modules": "^4.1.1",
-    "vite": "^4.1.1",
-    "vite-plugin-solid": "^2.5.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.2.1",
+    "vite-plugin-solid": "^2.7.0",
     "vite-plugin-windicss": "^1.8.10",
     "windicss": "^3.5.6"
   },
   "dependencies": {
     "solid-icons": "^1.0.4",
-    "solid-js": "^1.6.10",
-    "solid-transition-group": "^0.0.13"
+    "solid-js": "^1.7.3",
+    "solid-transition-group": "^0.2.2"
   }
 }

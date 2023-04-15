@@ -1,5 +1,4 @@
 /* eslint-disable */
-import fetch from 'node-fetch';
 import fs from 'fs/promises';
 import path from 'path';
 import semver from 'semver';
